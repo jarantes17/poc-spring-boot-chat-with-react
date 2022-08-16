@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  overflow: hidden;
+  font-family: "Poppins";
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #2255be;
+  padding: 20px;
+}
+
+#box {
+  display: grid;
+  grid-template-columns: 280px auto;
+  grid-template-rows: 90px 1fr 70px;
+  grid-template-areas:
+    "header header"
+    "users messages"
+    "users input";
+  gap: 24px;
+  width: 50%;
+  height: 75%;
+  padding: 36px;
+  background-color: #f4f6ff;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+#box > .header {
+  grid-area: header;
+  background-color: #fff;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#box > .users {
+  grid-area: users;
+  background-color: #fff;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  padding: 25px;
+}
+
+#box > .messages {
+  grid-area: messages;
+  background-color: #fff;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+#box > .input {
+  grid-area: input;
+  background-color: #fff;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+.header-title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.users-title {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.user-list {
+  display: block;
+  padding: 16px 16px 16px 0;
+}
+
+.user-list > li {
+  margin-bottom: 10px;
+}
+
+.user-link {
+  text-decoration: none;
+  color: black;
+}
+
+.user-link :hover {
+  background-color: #f4f6ff;
+  border-radius: 0 0 25px 25px;
+}
+
+.user-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-circle {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: #f4f6ff;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.user-name {
+  font-size: 1.1rem;
+}

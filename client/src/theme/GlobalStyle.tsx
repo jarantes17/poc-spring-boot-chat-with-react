@@ -141,6 +141,30 @@ export default createGlobalStyle`
     overflow: hidden;
     font-family: "Poppins", serif;
   }
+
+  // animations
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slide-in {
+    100% { transform: translateX(0%); }
+  }
+  
+  @keyframes slide-out {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+  }
+
+
 `
 // common components
 export const BasicButton = styled.button`

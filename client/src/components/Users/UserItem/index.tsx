@@ -1,14 +1,10 @@
-import React, {PropsWithChildren} from "react";
-import {Container} from "./styles";
+import React, { PropsWithChildren } from 'react'
+import { Container } from './styles'
 
-export interface IUserItemProps extends PropsWithChildren {
-}
+export interface IUserItemProps extends PropsWithChildren {}
 
 const UserItem: React.FunctionComponent<IUserItemProps> = (props) => {
-    return (
-        <Container>
-        </Container>
-    )
+  return <Container></Container>
 }
 
 export default UserItem

@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from "styled-components"
+import styled, { createGlobalStyle } from 'styled-components'
 
 // universal styles
 export default createGlobalStyle`
@@ -38,7 +38,7 @@ export const BasicButton = styled.button`
   color: var(--white);
   font-size: 1rem;
   font-weight: 600;
-  
+
   :last-child {
     margin-right: 0;
   }
@@ -46,4 +46,5 @@ export const BasicButton = styled.button`
   &:hover {
     opacity: 0.8;
     cursor: pointer;
-  }`
+  }
+`

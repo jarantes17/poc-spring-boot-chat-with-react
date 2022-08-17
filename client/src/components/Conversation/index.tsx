@@ -1,14 +1,10 @@
-import React, {PropsWithChildren} from "react";
-import {Container} from "./styles";
+import React, { PropsWithChildren } from 'react'
+import { Container } from './styles'
 
-export interface IConversationProps extends PropsWithChildren{}
+export interface IConversationProps extends PropsWithChildren {}
 
-const Conversation : React.FunctionComponent<IConversationProps> = (props) => {
-    return (
-        <Container>
-            Here is conversation
-        </Container>
-    )
+const Conversation: React.FunctionComponent<IConversationProps> = (props) => {
+  return <Container>Here is conversation</Container>
 }
 
 export default Conversation

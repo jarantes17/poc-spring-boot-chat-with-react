@@ -1,13 +1,13 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 280px auto;
   grid-template-rows: 90px 1fr 70px;
   grid-template-areas:
-    "header header"
-    "users conversation"
-    "users input";
+    'header header'
+    'users conversation'
+    'users input';
   gap: 24px;
   width: 50%;
   height: 75%;

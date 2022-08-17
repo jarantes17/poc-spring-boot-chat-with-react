@@ -7,8 +7,8 @@ export type IChatRoomProps = PropsWithChildren
 const ChatRoom: React.FunctionComponent<IChatRoomProps> = (props) => {
   return (
     <S.Container>
-      <S.Title>Minha Sala</S.Title>
-      <BasicButton>SAIR</BasicButton>
+      <S.Title>My Room</S.Title>
+      <BasicButton>LEAVE</BasicButton>
     </S.Container>
   )
 }

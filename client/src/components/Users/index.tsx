@@ -1,10 +1,19 @@
 import React, { PropsWithChildren } from 'react'
-import { Container } from './styles'
+import { User } from '../../model/types'
+import * as S from './styles'
+import UserList from './UserList'
 
-export interface IUsersProps extends PropsWithChildren {}
+export interface IUsersProps extends PropsWithChildren {
+  users: User[]
+}
 
 const Users: React.FunctionComponent<IUsersProps> = (props) => {
-  return <Container>Here is users</Container>
+  return (
+    <S.Container>
+      <S.Title>Users</S.Title>
+      <UserList users={props.users} />
+    </S.Container>
+  )
 }
 
 export default Users

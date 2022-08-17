@@ -7,3 +7,8 @@ export const Container = styled.div`
   border-radius: 25px;
   padding: 25px;
 `
+
+export const Title = styled.h1`
+  font-weight: 600;
+  font-size: 1.8rem;
+`

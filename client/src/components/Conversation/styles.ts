@@ -8,6 +8,24 @@ export const Container = styled.div`
   gap: 16px;
 `
 
+export const ChatMessageLine = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+`
+
+export const UserSlug = styled.div`
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--white);
+  border-radius: 25px;
+  font-weight: 600;
+`
+
 export const DialogRight = styled.div`
   display: block;
   color: var(--white);

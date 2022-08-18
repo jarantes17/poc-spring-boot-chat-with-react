@@ -96,9 +96,9 @@ export default createGlobalStyle`
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
   }
+
   /* HTML5 display-role reset for older browsers */
   article,
   aside,
@@ -113,33 +113,44 @@ export default createGlobalStyle`
   section {
     display: block;
   }
+
   body {
     line-height: 1;
   }
+
   ol,
   ul {
     list-style: none;
   }
+
   blockquote,
   q {
     quotes: none;
   }
+
   blockquote:before,
   blockquote:after,
   q:before,
   q:after {
-    content: "";
     content: none;
   }
+
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
 
-  
   body {
     overflow: hidden;
     font-family: "Poppins", serif;
+  }
+
+  .dialog-right {
+    justify-content: flex-end;
+  }
+
+  .dialog-left {
+    justify-content: flex-start;
   }
 
   // animations
@@ -156,12 +167,18 @@ export default createGlobalStyle`
   }
 
   @keyframes slide-in {
-    100% { transform: translateX(0%); }
+    100% {
+      transform: translateX(0%);
+    }
   }
-  
+
   @keyframes slide-out {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(0%); }
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
   }
 
 

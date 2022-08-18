@@ -35,6 +35,6 @@ export const SendButton = styled.button`
   &:hover {
     cursor: pointer;
     background-color: var(--bg-box);
-    border-radius: 25px 25px 25px 0;
+    border-radius: 0 25px 25px 0;
   }
 `

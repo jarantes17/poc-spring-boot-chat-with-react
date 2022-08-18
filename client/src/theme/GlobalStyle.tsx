@@ -99,7 +99,6 @@ export default createGlobalStyle`
     vertical-align: baseline;
   }
 
-  /* HTML5 display-role reset for older browsers */
   article,
   aside,
   details,
@@ -151,6 +150,16 @@ export default createGlobalStyle`
 
   .dialog-left {
     justify-content: flex-start;
+  }
+
+  .start-right-animation {
+    transform: translateX(-100%);
+    animation: slide-in 0.5s forwards;
+  }
+
+  .start-left-animation {
+    transform: translateX(-100%);
+    animation: slide-out 0.5s forwards;
   }
 
   // animations

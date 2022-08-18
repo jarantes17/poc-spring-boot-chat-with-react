@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { FiSend } from 'react-icons/fi'
+import { BiSend } from 'react-icons/bi'
 import * as S from './styles'
 
 export interface IInputMessageProps extends PropsWithChildren {}
@@ -9,7 +9,7 @@ const InputMessage: React.FunctionComponent<IInputMessageProps> = (props) => {
     <S.Container>
       <S.InputMessage placeholder={'Write your message here'} />
       <S.SendButton>
-        <FiSend size={'24px'} />
+        <BiSend size={'36px'} />
       </S.SendButton>
     </S.Container>
   )

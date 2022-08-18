@@ -37,11 +37,6 @@ export const DialogRight = styled.div`
   max-width: 50%;
   align-self: flex-end;
 
-  .start-animation {
-    transform: translateX(-100%);
-    animation: slide-in 0.5s forwards;
-  }
-
   & > span {
     float: right;
   }
@@ -56,11 +51,6 @@ export const DialogLeft = styled.div`
   width: fit-content;
   max-width: 50%;
   align-self: flex-start;
-
-  .start-animation {
-    transform: translateX(-100%);
-    animation: slide-out 0.5s forwards;
-  }
 
   & > span {
     float: left;

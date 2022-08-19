@@ -72,7 +72,7 @@ const ChatRoom: React.FunctionComponent<IChatRoomProps> = () => {
         }
         break
       case 'MESSAGE':
-        publicChats.push(payloadData)
+        publicChats.push(payloadData as never)
         setPublicChats([...publicChats])
         break
     }
@@ -93,6 +93,7 @@ const ChatRoom: React.FunctionComponent<IChatRoomProps> = () => {
   }
 
   const userJoin = () => {}
+
   return (
     <>
       {userData.connected ? (

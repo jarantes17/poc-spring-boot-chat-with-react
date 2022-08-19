@@ -10,6 +10,13 @@ export interface IUserListProps extends PropsWithChildren {
 const UserList: React.FunctionComponent<IUserListProps> = ({ users }) => {
   return (
     <S.Container>
+      <UserItem
+        user={{
+          slug: 'CR',
+          name: 'ChatRoom'
+        }}
+        key={'CR'}
+      />
       {users.map((user) => (
         <UserItem user={user} key={user.slug} />
       ))}

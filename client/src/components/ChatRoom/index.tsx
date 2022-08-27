@@ -14,8 +14,9 @@ export interface IChatRoomProps extends PropsWithChildren {}
 let stompClient: Client
 
 const ChatRoom: React.FunctionComponent<IChatRoomProps> = () => {
-  const [privateChats, setPrivateChats] = useState(new Map())
+  const [privateChats, setPrivateChats] = useState(new Map<string, any>())
   const [publicChats, setPublicChats] = useState([])
+  const [users, setUsers] = useState([] as User[])
   const [tab, setTab] = useState('CHATROOM')
   const [userData, setUserData] = useState({
     username: '',
@@ -25,14 +26,43 @@ const ChatRoom: React.FunctionComponent<IChatRoomProps> = () => {
   })
 
   useEffect(() => {
-    console.log(userData)
+    console.log('userData', userData)
   }, [userData])
 
-  const onRequestedJoin = (username: string) => {
+  useEffect(() => {
+    renderJoinedUsers()
+  }, [privateChats])
+
+  const renderJoinedUsers = () => {
+    const joinedUsers = [] as User[]
+    for (const entry of Array.from(privateChats.entries())) {
+      if (entry[0].length > 0) {
+        joinedUsers.push({
+          name: entry[0],
+          slug: entry[0].substring(0, 2).toUpperCase()
+        })
+      }
+    }
+    setUsers(joinedUsers)
+  }
+
+  const handleUsername = (event: any) => {
+    const { value } = event.target
     setUserData({
       ...userData,
-      username
+      username: value
     })
+  }
+
+  const handleMessage = (event: any) => {
+    const { value } = event.target
+    setUserData({
+      ...userData,
+      message: value
+    })
+  }
+
+  const registerUser = () => {
     connect()
   }
 
@@ -63,6 +93,7 @@ const ChatRoom: React.FunctionComponent<IChatRoomProps> = () => {
   const onError = () => {}
 
   const onMessageReceived = (payload: any) => {
+    console.log('onPublicMessage', payload)
     const payloadData = JSON.parse(payload.body)
     switch (payloadData.status) {
       case 'JOIN':
@@ -92,44 +123,77 @@ const ChatRoom: React.FunctionComponent<IChatRoomProps> = () => {
     }
   }
 
-  const userJoin = () => {}
+  const userJoin = () => {
+    const chatMessage = {
+      senderName: userData.username,
+      status: 'JOIN'
+    }
+    console.log()
+    stompClient.send('/app/message', {}, JSON.stringify(chatMessage))
+  }
+
+  const sendPublicMessage = () => {
+    if (stompClient) {
+      const chatMessage = {
+        senderName: userData.username,
+        message: userData.message,
+        status: 'MESSAGE'
+      }
+      stompClient.send('/app/message', {}, JSON.stringify(chatMessage))
+      setUserData({
+        ...userData,
+        message: ''
+      })
+    }
+  }
+
+  const sendPrivateMessage = () => {
+    if (stompClient) {
+      const chatMessage = {
+        senderName: userData.username,
+        receiverName: tab,
+        message: userData.message,
+        status: 'MESSAGE'
+      }
+
+      if (userData.username !== tab) {
+        privateChats.get(tab).push(chatMessage)
+        setPrivateChats(new Map(privateChats))
+      }
+      stompClient.send('/app/private-message', {}, JSON.stringify(chatMessage))
+      setUserData({
+        ...userData,
+        message: ''
+      })
+    }
+  }
 
   return (
     <>
       {userData.connected ? (
         <Container>
           <Header onLeave={onLeave} />
-          <Users
-            users={
-              [
-                {
-                  name: 'ankit',
-                  slug: 'AN'
-                },
-                {
-                  name: 'akash',
-                  slug: 'AK'
-                },
-                {
-                  name: 'komal',
-                  slug: 'KO'
-                },
-                {
-                  name: 'alake',
-                  slug: 'AL'
-                },
-                {
-                  name: 'arun',
-                  slug: 'AR'
-                }
-              ] as User[]
-            }
+          <Users users={users} onChangeTab={setTab} selectedTab={tab} />
+          <Conversation
+            publicChats={publicChats}
+            privateChats={privateChats}
+            selectedTab={tab}
+            username={userData.username}
           />
-          <Conversation />
-          <InputMessage />
+          <InputMessage
+            selectedTab={tab}
+            sendPublicMessage={sendPublicMessage}
+            sendPrivateMessage={sendPrivateMessage}
+            message={userData.message}
+            handleMessage={handleMessage}
+          />
         </Container>
       ) : (
-        <Register onRequestedJoin={onRequestedJoin} />
+        <Register
+          username={userData.username}
+          handleUsername={handleUsername}
+          registerUser={registerUser}
+        />
       )}
     </>
   )

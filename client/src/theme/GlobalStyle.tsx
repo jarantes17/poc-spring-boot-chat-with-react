@@ -162,6 +162,26 @@ export default createGlobalStyle`
     animation: slide-out 0.5s forwards;
   }
 
+  .active {
+    background-color: var(--blue);
+    border-radius: 25px 25px 25px 25px;
+
+    &.red {
+      background-color: red !important;
+    }
+
+    & a {
+      color: var(--white) !important;
+    }
+    
+    & :hover {
+      opacity: 0.9;
+      cursor: pointer;
+      color: black !important;
+
+    }
+  }
+
   // animations
   @keyframes fade {
     from {

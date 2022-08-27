@@ -26,34 +26,23 @@ export const UserSlug = styled.div`
   font-weight: 600;
 `
 
-export const DialogRight = styled.div`
+interface DialogProps {
+  self: boolean
+}
+
+export const Dialog = styled.div<DialogProps>`
   display: block;
-  color: var(--white);
-  background-color: var(--blue);
+  color: ${(props) => (props.self ? 'var(--white)' : 'var(--black)')};
+  background-color: ${(props) => (props.self ? 'var(--blue)' : 'var(--white)')};
   padding: 16px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border-radius: 25px 25px 0 25px;
+  border-radius: ${(props) => (props.self ? '25px 25px 0 25px' : '25px 25px 25px 0')};
   width: fit-content;
   max-width: 50%;
-  align-self: flex-end;
+  align-self: ${(props) => (props.self ? 'flex-end' : 'flex-start')};
 
   & > span {
-    float: right;
-  }
-`
-
-export const DialogLeft = styled.div`
-  display: block;
-  background-color: var(--white);
-  padding: 16px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border-radius: 25px 25px 25px 0;
-  width: fit-content;
-  max-width: 50%;
-  align-self: flex-start;
-
-  & > span {
-    float: left;
+    float: ${(props) => (props.self ? 'right' : 'left')};
   }
 `
 

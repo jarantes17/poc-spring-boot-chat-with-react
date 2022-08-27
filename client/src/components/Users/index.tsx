@@ -5,13 +5,15 @@ import UserList from './UserList'
 
 export interface IUsersProps extends PropsWithChildren {
   users: User[]
+  onChangeTab: (tab: string) => void
+  selectedTab: string
 }
 
-const Users: React.FunctionComponent<IUsersProps> = (props) => {
+const Users: React.FunctionComponent<IUsersProps> = ({ users, onChangeTab, selectedTab }) => {
   return (
     <S.Container>
       <S.Title>Users</S.Title>
-      <UserList users={props.users} />
+      <UserList users={users} onChangeTab={onChangeTab} selectedTab={selectedTab} />
     </S.Container>
   )
 }

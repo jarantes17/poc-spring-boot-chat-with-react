@@ -5,20 +5,24 @@ import * as S from './styles'
 
 export interface IUserListProps extends PropsWithChildren {
   users: User[]
+  onChangeTab: (tab: string) => void
+  selectedTab: string
 }
 
-const UserList: React.FunctionComponent<IUserListProps> = ({ users }) => {
+const UserList: React.FunctionComponent<IUserListProps> = ({ users, onChangeTab, selectedTab }) => {
   return (
     <S.Container>
       <UserItem
         user={{
           slug: 'CR',
-          name: 'ChatRoom'
+          name: 'CHATROOM'
         }}
         key={'CR'}
+        onChangeTab={onChangeTab}
+        selectedTab={'CHATROOM'}
       />
       {users.map((user) => (
-        <UserItem user={user} key={user.slug} />
+        <UserItem user={user} key={user.slug} onChangeTab={onChangeTab} selectedTab={selectedTab} />
       ))}
     </S.Container>
   )

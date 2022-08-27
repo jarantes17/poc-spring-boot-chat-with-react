@@ -4,11 +4,16 @@ import * as S from './styles'
 
 export interface IUserItemProps extends PropsWithChildren {
   user: User
+  onChangeTab: (tab: string) => void
+  selectedTab: string
 }
 
-const UserItem: React.FunctionComponent<IUserItemProps> = ({ user }) => {
+const UserItem: React.FunctionComponent<IUserItemProps> = ({ user, onChangeTab, selectedTab }) => {
   return (
-    <S.Container>
+    <S.Container
+      className={`member ${selectedTab === user.name && 'active'}`}
+      onClick={() => onChangeTab(user.name)}
+    >
       <S.UserLink href="#">
         <S.UserContent>
           <S.UserSlug>{user.slug}</S.UserSlug>

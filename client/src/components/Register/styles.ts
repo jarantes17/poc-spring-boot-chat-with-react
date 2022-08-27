@@ -16,7 +16,7 @@ export const Title = styled.h1`
   font-size: 1.8rem;
 `
 
-export const FormUser = styled.form`
+export const FormUser = styled.div`
   grid-area: input;
   border-radius: 25px;
   margin-top: 20px;

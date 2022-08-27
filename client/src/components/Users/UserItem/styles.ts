@@ -28,6 +28,7 @@ export const UserSlug = styled.div`
   width: 40px;
   height: 40px;
   background-color: #f4f6ff;
+  color: black;
   border-radius: 25px;
   font-weight: 600;
 `

@@ -13,14 +13,14 @@ class ChatController(
 ) {
 
     @MessageMapping("/message")
-    @SendTo("chatroom/public")
+    @SendTo("/chatroom/public")
     fun receivePublicMessage(@Payload message: Message): Message {
         return message
     }
 
     @MessageMapping("/private-message")
     fun receivePrivateMessage(@Payload message: Message): Message {
-        simpMessagingTemplate.convertAndSendToUser(message.receiverName, "/private", message)
+        simpMessagingTemplate.convertAndSendToUser(message.receiverName!!, "/private", message)
         return message
     }
 }

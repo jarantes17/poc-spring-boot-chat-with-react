@@ -172,7 +172,7 @@ const ChatRoom: React.FunctionComponent<IChatRoomProps> = () => {
     <>
       {userData.connected ? (
         <Container>
-          <Header onLeave={onLeave} />
+          <Header onLeave={onLeave} username={userData.username} />
           <Users users={users} onChangeTab={setTab} selectedTab={tab} />
           <Conversation
             publicChats={publicChats}

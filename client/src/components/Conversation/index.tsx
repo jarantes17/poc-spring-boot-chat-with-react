@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import format from 'date-fns/esm/format'
 import * as S from './styles'
 
 export interface IConversationProps extends PropsWithChildren {
@@ -24,7 +25,11 @@ const Conversation: React.FunctionComponent<IConversationProps> = ({
         <>
           {publicChats.map((chat: any, index) => (
             <S.ChatMessageLine
-              className={`${chat.senderName === username ? 'dialog-right' : 'dialog-left'}`}
+              className={`${
+                chat.senderName === username
+                  ? 'dialog-right start-right-animation '
+                  : 'dialog-left start-left-animation'
+              }`}
               key={index}
             >
               {chat.senderName !== username && (
@@ -32,7 +37,7 @@ const Conversation: React.FunctionComponent<IConversationProps> = ({
               )}
               <S.Dialog self={chat.senderName === username}>
                 <S.DialogContent>{chat.message}</S.DialogContent>
-                <S.DialogTime>00:00</S.DialogTime>
+                <S.DialogTime>{format(new Date(), 'HH:mm')}</S.DialogTime>
               </S.Dialog>
               {chat.senderName === username && (
                 <S.UserSlug>{formatSlug(chat.senderName)}</S.UserSlug>
@@ -45,7 +50,11 @@ const Conversation: React.FunctionComponent<IConversationProps> = ({
         <>
           {[...privateChats.get(selectedTab)].map((chat, index) => (
             <S.ChatMessageLine
-              className={`${chat.senderName === username ? 'dialog-right' : 'dialog-left'}`}
+              className={`${
+                chat.senderName === username
+                  ? 'dialog-right start-right-animation '
+                  : 'dialog-left start-left-animation'
+              }`}
               key={index}
             >
               {chat.senderName !== username && (
@@ -53,7 +62,7 @@ const Conversation: React.FunctionComponent<IConversationProps> = ({
               )}
               <S.Dialog self={chat.senderName === username}>
                 <S.DialogContent>{chat.message}</S.DialogContent>
-                <S.DialogTime>00:00</S.DialogTime>
+                <S.DialogTime>{format(new Date(), 'HH:mm')}</S.DialogTime>
               </S.Dialog>
               {chat.senderName === username && (
                 <S.UserSlug>{formatSlug(chat.senderName)}</S.UserSlug>

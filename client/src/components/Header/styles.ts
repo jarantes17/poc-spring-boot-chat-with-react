@@ -16,3 +16,11 @@ export const Title = styled.h1`
   font-weight: 700;
   font-size: 2rem;
 `
+
+export const JoinedUser = styled.div`
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`

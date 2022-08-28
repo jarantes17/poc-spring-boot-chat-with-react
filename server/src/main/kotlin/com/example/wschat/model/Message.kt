@@ -6,8 +6,7 @@ data class Message(
     val senderName: String?,
     val receiverName: String?,
     val message: String?,
-    val creationDate: LocalDateTime?,
     val status: Status
 ) {
-
+    val creationDate: LocalDateTime? = LocalDateTime.now()
 }
